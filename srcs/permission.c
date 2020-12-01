@@ -3,13 +3,14 @@
 void	put_filetype(int n)
 {
 	if ((S_IFMT & n) == S_IFREG)
-        ft_putstr("-");
+        printf("-");
     else if ((S_IFMT & n) == S_IFDIR)
-        ft_putstr("d");
+        printf("d");
     else
     {
         // 変更するべき
-        ft_putstr("?");
+        printf("?");
+		;
     }
 }
 

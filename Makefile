@@ -15,13 +15,15 @@ SRCS = srcs/main.c \
 		srcs/display.c \
 		srcs/each_do_ls.c \
 		srcs/debug.c \
-		srcs/permission.c
+		srcs/permission.c \
+		srcs/cmp.c \
+		srcs/check_filetype.c
 
 INCS = head.h
 
 OBJS = $(SRCS:.c=.o)
 
-NAME = ft_ls
+NAME = ft_mini_ls
 
 CC = gcc
 

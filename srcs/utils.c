@@ -19,11 +19,17 @@ int    key(char c)
         return (1);
     else if (c == 'R')
         return (2);
-    else if (c == 'r')
+    else if (c == 'u')
         return (3);
-    else if (c == 't')
+    else if (c == 'U')
         return (4);
-    return (5);
+    else if (c == 's')
+        return (5);
+    else if (c == 'S')
+        return (6);
+    else if (c == 'G')
+        return (7);
+    return (8);
 }
 
 char    *ft_strjoin3(char *s, char *t)
