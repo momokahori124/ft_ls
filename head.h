@@ -56,7 +56,8 @@ int		is_directory(char *dirname, char *inner_dirname);
 int		is_regfile(char *dirname, char *inner_dirname);
 
 char    *path_to_filename(char *s);
-void    convert_path(char *dirname, char **inner_dirname, char **path);
+// void    convert_path(char *dirname, char **inner_dirname, char **path);
+void    convert_path(char *dirname, char **inner_dirname, char ***path);
 
 /* sort.c */
 void    sort_by(char **dirname, int(*cmp_func)(char *, char *));
@@ -64,7 +65,7 @@ void    sort_by(char **dirname, int(*cmp_func)(char *, char *));
 void	ft_printf_d(char *fmt, int width, ll n);
 void	ft_printf_s(char *fmt, int width, char *t);
 
-void	free_2D(char **s);
+void	free_2D(char ***s);
 void	save_2D(char ***tmp, char **s);
 void    path_to_filename_2D(char ***s);
 

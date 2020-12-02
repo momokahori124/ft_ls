@@ -18,7 +18,7 @@ void    no_option_R(char *dirname, t_input input)
     if (dirname == NULL)
         return ;
     display_2D(dirname, inner_dirname, input);
-    free_2D(inner_dirname);
+    free_2D(&inner_dirname);
 }
 
 void    option_R(char *dirname, t_input input, int index)
@@ -50,7 +50,7 @@ void    option_R(char *dirname, t_input input, int index)
         }
         i++;
     }
-    free_2D(inner_dirname);
+    free_2D(&inner_dirname);
 }
 
 void    do_ls(char *dirname, t_input input)

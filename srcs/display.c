@@ -8,7 +8,6 @@ void        put_by_option(char *dirname, char *inner_dirname, t_input input)
     if (input.option[key('s')] == 1)
         ft_printf_d("%", 3, buf.st_blocks);
     ft_put_dirname(dirname, inner_dirname, input);
-    // ft_printf_s("%\n", 0, inner_dirname);
 }
 
 void    display_2D(char *dirname, char **inner_dirname, t_input input)

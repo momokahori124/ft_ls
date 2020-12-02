@@ -27,9 +27,7 @@ int    input_inner(char **inner_dirname, char *dirname)
     struct dirent   *direntp; 
 
     if ((dir_ptr = opendir(dirname)) == NULL)
-    {
         return (-1);
-    }
     int i = 0;
     while ((direntp = readdir(dir_ptr)) != NULL)
     {
@@ -126,7 +124,6 @@ int     main(int ac, char *av[])
     count_and_malloc_dirname(av, &input);
     input_dirname(av, &input);
     each_do_ls(input);
-    free_2D(input.dirname);
-    while (1);
+    free_2D(&input.dirname);
     return (0);
 }

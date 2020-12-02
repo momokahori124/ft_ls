@@ -24,26 +24,33 @@ char    *path_to_filename(char *s)
     return (ret);
 }
 
-void    convert_path(char *dirname, char **inner_dirname, char **path)
+void    convert_path(char *dirname, char **inner_dirname, char ***path)
 {
     int i;
+    
+    i = 0;
+    while (inner_dirname[i])
+        i++;
+    (*path) = malloc(sizeof(char *) * (i + 1));
 
     if (dirname[0] == '.' && dirname[1] != '/')
     {
         i = 0;
         while (inner_dirname[i])
         {
-            path[i] = ft_strdup(inner_dirname[i]);
+            (*path)[i] = ft_strdup(inner_dirname[i]);
             i++;
         }
+        (*path)[i] = NULL;
         return;
     }
     i = 0;
     while (inner_dirname[i])
     {
-        path[i] = ft_strjoin3(dirname, inner_dirname[i]);
+        (*path)[i] = ft_strjoin3(dirname, inner_dirname[i]);
         i++;
     }
+    (*path)[i] = NULL;
 }
 
 void    path_to_filename_2D(char ***s)

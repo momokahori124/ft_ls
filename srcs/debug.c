@@ -17,7 +17,7 @@ void    put_dirname(char **dirname)
     int i = 0;
     while (dirname[i])
     {
-        printf("dirname[%d] = %s\n", i, dirname[i]);
+        printf("%p : dirname[%d] = %s\n", dirname[i], i, dirname[i]);
         i++;
     }
     printf("----------------------\n\n");

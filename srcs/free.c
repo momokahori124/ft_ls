@@ -17,15 +17,15 @@ void	save_2D(char ***tmp, char **s)
 	(*tmp)[i] = NULL;
 }
 
-void	free_2D(char **s)
+void	free_2D(char ***s)
 {
 	int i = 0;
-	while (s[i])
+	while ((*s)[i])
 	{
-		free(s[i]);
-		s[i] = NULL;
+		free((*s)[i]);
+		(*s)[i] = NULL;
 		i++;
 	}
-	free(s);
-	s = NULL;
+	free((*s));
+	(*s) = NULL;
 }
