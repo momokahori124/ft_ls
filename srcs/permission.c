@@ -3,17 +3,17 @@
 void	put_filetype(int n)
 {
 	if (S_ISREG(n) == 1)
-        ft_putstr("-");
+        printf("-");
     else if (S_ISDIR(n) == 1)
-        ft_putstr("d");
+        printf("d");
 	else if (S_ISLNK(n) == 1)
-		ft_putstr("l");
+		printf("l");
 	else if (S_ISCHR(n) == 1)
-		ft_putstr("b");
+		printf("b");
 	else if (S_ISBLK(n) == 1)
-		ft_putstr("c");
+		printf("c");
 	else
-		ft_putstr("?");
+		printf("?");
 }
 
 void	init_per(char *s)

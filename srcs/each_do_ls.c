@@ -70,7 +70,7 @@ void    each_do_ls(t_input input)
     int i = 0;
     int flag = 0;
 
-    sort_by(input.dirname, &(cmp_by_alpha));
+    sort_dirname(".", input.dirname, input);
     if (input.dirnum > 1)
         flag = 1;
     i = 0;
@@ -79,7 +79,7 @@ void    each_do_ls(t_input input)
         if (flag == 1)
             printf("%s:\n", input.dirname[i]);
         do_ls(input.dirname[i], input);
-        if (flag == 1 && input.option[key('l')] != 1)
+        if (flag == 1 && input.option[key('l')] != 1 && input.option[key('R')] != 1)
             printf("\n");
         if (i < input.dirnum - 1)
             printf("\n");

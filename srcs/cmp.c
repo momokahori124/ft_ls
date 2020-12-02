@@ -65,5 +65,5 @@ int		cmp_by_filesize(char *s, char *t)
 		perror("cmp_by_ctime : ");
 		exit(0);
 	}	
-	return (buf1.st_size - buf2.st_size);
+	return (-(buf1.st_size - buf2.st_size));
 }
