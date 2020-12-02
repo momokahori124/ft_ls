@@ -124,12 +124,9 @@ int     main(int ac, char *av[])
     t_input input;
     input = (t_input){0};
     input_option(&input, ac, av);
-    // put_option(input.option);
     count_and_malloc_dirname(av, &input);
     input_dirname(av, &input);
-    // put_dirname(input.dirname);
     each_do_ls(input);
+    while (1);
     return (0);
-
-    // printf("%d\n", is_regfile("./srcs", "debug.o"));
 }

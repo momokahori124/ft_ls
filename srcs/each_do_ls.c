@@ -35,9 +35,6 @@ void    option_R(char *dirname, t_input input, int index)
     inner_dirname = (char **)malloc(sizeof(char *) * (count + 1));
     input_inner(inner_dirname, dirname);
     sort_dirname(dirname, inner_dirname, input);
-    if (dirname == NULL)
-        return ;
-
     if (index > 0)
         printf("\n%s:\n", dirname);
     display_2D(dirname, inner_dirname, input);
@@ -79,7 +76,7 @@ void    each_do_ls(t_input input)
         if (flag == 1)
             printf("%s:\n", input.dirname[i]);
         do_ls(input.dirname[i], input);
-        if (flag == 1 && input.option[key('l')] != 1 && input.option[key('R')] != 1)
+        if (flag == 1 && input.option[key('R')] != 1)
             printf("\n");
         if (i < input.dirnum - 1)
             printf("\n");
