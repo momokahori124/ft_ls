@@ -2,7 +2,7 @@
 
 void    ft_swap(char **s, char **t)
 {
-    char *tmp;
+    char    *tmp;
 
     tmp = *s;
     *s = *t;
@@ -11,8 +11,8 @@ void    ft_swap(char **s, char **t)
 
 void    sort_by(char **dirname, int(*cmp_func)(char *, char *))
 {
-    int i;
-    int j;
+    int     i;
+    int     j;
 
     i = 0;
     while (dirname[i])
