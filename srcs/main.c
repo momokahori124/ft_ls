@@ -33,7 +33,7 @@ int    input_inner(char **inner_dirname, char *dirname)
     int i = 0;
     while ((direntp = readdir(dir_ptr)) != NULL)
     {
-        inner_dirname[i] = strdup(direntp->d_name);
+        inner_dirname[i] = ft_strdup(direntp->d_name);
         i++;
     }
     if (i == 0)
@@ -71,7 +71,7 @@ void    input_dirname(char *av[], t_input *input)
     //ここでdirnameないときはカレントディレクトリを入れるようにしてくれる
     if (input->dirnum == 0)
     {
-        input->dirname[0] = strdup(".");
+        input->dirname[0] = ft_strdup(".");
         input->dirname[1] = NULL;
         input->dirnum = 1;
         return ;
@@ -86,7 +86,7 @@ void    input_dirname(char *av[], t_input *input)
             flag = 1;
         if (flag == 1 || av[i][0] != '-')
         {
-            input->dirname[count] = strdup(av[i]);
+            input->dirname[count] = ft_strdup(av[i]);
             count++;
         }
         i++;
@@ -130,4 +130,6 @@ int     main(int ac, char *av[])
     // put_dirname(input.dirname);
     each_do_ls(input);
     return (0);
+
+    // printf("%d\n", is_regfile("./srcs", "debug.o"));
 }

@@ -9,7 +9,7 @@ char *convert_time(char *t)
     while (*t != ' ')
         t++;
     t++;
-    ret = strdup(t);
+    ret = ft_strdup(t);
     i = 0;
     count = 0;
     while (ret[i])
@@ -37,7 +37,7 @@ void    put_by_l(char *dirname, char *inner_dirname, t_input input)
     if (dirname[0] != '.')
         tmp = ft_strjoin3(dirname, inner_dirname);
     else
-        tmp = strdup(inner_dirname);
+        tmp = ft_strdup(inner_dirname);
     if (lstat(tmp, &stat_buf) == 0)
     {
         put_permission(stat_buf.st_mode);

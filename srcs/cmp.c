@@ -19,6 +19,8 @@ int		cmp_by_mtime(char *s, char *t)
 	struct stat     buf1;	
 	struct stat     buf2;
 
+	// printf("%s %s\n", s, t);
+
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{
 		perror("cmp_by_mtime : ");

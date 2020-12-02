@@ -34,7 +34,7 @@ int    key(char c)
 
 char    *ft_strjoin3(char *s, char *t)
 {
-    int len = strlen(s) + strlen(t) + 10;
+    int len = ft_strlen(s) + ft_strlen(t) + 10;
     char *ret = (char *)malloc(sizeof(char) * len);
     int i = 0;
     while (s[i])

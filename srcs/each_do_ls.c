@@ -1,37 +1,8 @@
 
 #include "../head.h"
 
-void    convert_path(char *dirname, char **inner_dirname, char **path)
+void    no_option_R(char *dirname, t_input input)
 {
-    int i;
-
-    if (dirname[0] == '.')
-    {
-        i = 0;
-        while (inner_dirname[i])
-        {
-            path[i] = inner_dirname[i];
-            i++;
-        }
-        return;
-    }
-    i = 0;
-    char *tmp;
-    while (inner_dirname[i])
-    {
-        tmp = inner_dirname[i];
-        path[i] = ft_strjoin3(dirname, inner_dirname[i]);
-        free(tmp);
-        i++;
-    }
-}
-
-
-void    do_ls(char *dirname, t_input input, int index)
-{
-
-    printf("dirname : %s\n", dirname);
-
     DIR             *dir_ptr; 
     struct dirent   *direntp; 
     char            **inner_dirname;
@@ -44,49 +15,58 @@ void    do_ls(char *dirname, t_input input, int index)
     inner_dirname = (char **)malloc(sizeof(char *) * (count + 1));
     path = (char **)malloc(sizeof(char *) * (count + 1));
     input_inner(inner_dirname, dirname);
-    convert_path(dirname, inner_dirname, path);
-    sort_dirname(inner_dirname, input);
+    sort_dirname(dirname, inner_dirname, input);
     if (dirname == NULL)
         return ;
-    if (dirname[0] == '.' && index >= 1)
+    display_2D(dirname, inner_dirname, input);
+}
+
+/*
+    inner_dirnameを出力する　→　
+*/
+
+void    option_R(char *dirname, t_input input, int index)
+{
+    DIR             *dir_ptr; 
+    struct dirent   *direntp; 
+    char            **inner_dirname;
+    int             count;
+    char            *tmp;
+    char **path;
+
+    if ((count = count_inner(dirname)) == -1)
         return ;
-    if (index >= 1 && input.option[key('R')] == 1)
+    inner_dirname = (char **)malloc(sizeof(char *) * (count + 1));
+    input_inner(inner_dirname, dirname);
+    sort_dirname(dirname, inner_dirname, input);
+    if (dirname == NULL)
+        return ;
+
+    if (index > 0)
+        printf("\n%s:\n", dirname);
+    display_2D(dirname, inner_dirname, input);
+    int i = 0;
+    while (inner_dirname[i])
     {
-        // printf("------------\n");
-        display_2D(dirname, inner_dirname, input);
-        // printf("------------\n");
+        if (is_directory(dirname, inner_dirname[i]) == 1 && inner_dirname[i][0] != '.')
+        {
+            tmp = dirname;
+            tmp = ft_strjoin3(dirname, inner_dirname[i]);
+            option_R(tmp, input, index + 1);
+            free(tmp);
+        }
+        i++;
     }
-    else
-    {
-        // printf("==========\n");
-        display_2D(dirname, inner_dirname, input);
-        // printf("==========\n");
-    }
-    index++;
+}
+
+void    do_ls(char *dirname, t_input input)
+{
     if (input.option[key('R')] == 1)
     {
-        int i = 0;
-        while (inner_dirname[i])
-        {
-            // printf("see : %s\n", inner_dirname[i]);
-            //ここでディレクトリだけオープンしたい。
-            if (inner_dirname[i][0] != '.')
-            {
-                tmp = inner_dirname[i];
-                if (index >= 2)
-                    tmp = ft_strjoin3(dirname, inner_dirname[i]);
-                // printf("open : %s\n", tmp);
-                if (is_directory(dirname, tmp) == 1)
-                {
-                    printf("%s %s\n", dirname, tmp);
-                    do_ls(tmp, input, index);
-                }
-                if (index >= 2)
-                    free(tmp);
-            }
-            i++;
-        }
+        option_R(dirname, input, 0);
+        return ;
     }
+    no_option_R(dirname, input);
 }
 
 void    each_do_ls(t_input input)
@@ -94,7 +74,8 @@ void    each_do_ls(t_input input)
     int i = 0;
     int flag = 0;
 
-    sort_dirname(input.dirname, input);
+    // sort_dirname(input.dirname, input);
+    sort_by(input.dirname, &(cmp_by_alpha));
     if (input.dirnum > 1)
         flag = 1;
     i = 0;
@@ -102,7 +83,7 @@ void    each_do_ls(t_input input)
     {
         if (flag == 1)
             printf("%s:\n", input.dirname[i]);
-        do_ls(input.dirname[i], input, 0);
+        do_ls(input.dirname[i], input);
         if (flag == 1 && input.option[key('l')] != 1)
             printf("\n");
         if (i < input.dirnum - 1)

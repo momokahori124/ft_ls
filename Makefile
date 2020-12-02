@@ -17,7 +17,8 @@ SRCS = srcs/main.c \
 		srcs/debug.c \
 		srcs/permission.c \
 		srcs/cmp.c \
-		srcs/check_filetype.c
+		srcs/check_filetype.c \
+		srcs/path.c
 
 INCS = head.h
 
@@ -27,22 +28,31 @@ NAME = ft_mini_ls
 
 CC = gcc
 
+LIBS = Libft
+LIBFT = Libft/libft.a
+
 %.o: %.c
 	@$(CC) -c -o $@ $<
 
 $(NAME): $(OBJS)
-	@$(CC) -o $(NAME) $(OBJS) -I $(INCS) -g -fsanitize=address
+	@echo "$(_GREEN) Making... $(_END)"
+	@make -C $(LIBS)
+	@echo "$(_GREEN) Finish making Libft.a. $(_END)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -I $(INCS) -g -fsanitize=address
 	@echo "$(_GREEN) Executable '$(NAME)' created. $(_END)❤️"
-	@echo "$(_GREEN) Try ./$(NAME) to start. $(_END)"
+	@echo "$(_GREEN) Try ./$(NAME) to use. $(_END)"
 
 all :$(NAME)
 
 clean: 
+	@make clean -C $(LIBS)
 	@rm -f $(OBJS)
 	@echo " $(_RED)Object files has been deleted. $(_END)"
 
 fclean: clean	
+	@make fclean -C $(LIBS)
 	@rm -f $(NAME)
+	@echo " $(LIBFT) has been deleted."
 	@echo " $(_RED)Executable file has been deleted. $(_END)"
 
 re: fclean all

@@ -44,15 +44,39 @@ void    sort_reverse(char **dirname)
     }
 }
 
-void    sort_dirname(char **dirname, t_input input)
+
+void    sort_dirname(char *dirname, char **inner_dirname, t_input input)
 {
-    sort_by(dirname, &(cmp_by_alpha));
-    sort_by(dirname, &(cmp_by_mtime));//option-tがデフォルトなので
-    sort_reverse(dirname);//option-rがデフォルトなので
+    
+    char **tmp;
+    char *tp;
+    tmp = inner_dirname;
+
+    // sort_by(inner_dirname, &(cmp_by_alpha));
+
+    convert_path(dirname, inner_dirname, inner_dirname);
+
+    // put_dirname(inner_dirname);
+
+    sort_by(inner_dirname, &(cmp_by_mtime));//option-tがデフォルトなので
+
     if (input.option[key('S')] == 1)
-        sort_by(dirname, &(cmp_by_filesize));
+        sort_by(inner_dirname, &(cmp_by_filesize));
     if (input.option[key('u')] == 1)
-        sort_by(dirname, &(cmp_by_atime));
+        sort_by(inner_dirname, &(cmp_by_atime));
     if (input.option[key('U')] == 1)
-        sort_by(dirname, &(cmp_by_ctime));
+        sort_by(inner_dirname, &(cmp_by_ctime));
+
+    sort_reverse(inner_dirname);//option-rがデフォルトなので
+
+    int i = 0;
+    while (inner_dirname[i])
+    {
+        tp = inner_dirname[i];
+        inner_dirname[i] = path_to_filename(inner_dirname[i]);
+        free(tp);
+        i++;
+    }
+    // put_dirname(inner_dirname);
+    // free(tmp);
 }
