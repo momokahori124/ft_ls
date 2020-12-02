@@ -77,7 +77,9 @@ void    each_do_ls(t_input input)
         if (flag == 1)
             ft_printf_s("%:\n", 0, input.dirname[i]);
         do_ls(input.dirname[i], input);
-        if (flag == 1 && input.option[key('R')] != 1)
+        if (flag == 1)
+            ;
+        else if (flag == 1 && input.option[key('R')] != 1)
             ft_putstr("\n");
         if (i < input.dirnum - 1)
             ft_putstr("\n");
