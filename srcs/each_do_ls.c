@@ -21,10 +21,6 @@ void    no_option_R(char *dirname, t_input input)
     display_2D(dirname, inner_dirname, input);
 }
 
-/*
-    inner_dirnameを出力する　→　
-*/
-
 void    option_R(char *dirname, t_input input, int index)
 {
     DIR             *dir_ptr; 
@@ -74,7 +70,6 @@ void    each_do_ls(t_input input)
     int i = 0;
     int flag = 0;
 
-    // sort_dirname(input.dirname, input);
     sort_by(input.dirname, &(cmp_by_alpha));
     if (input.dirnum > 1)
         flag = 1;

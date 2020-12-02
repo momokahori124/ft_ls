@@ -2,16 +2,18 @@
 
 void	put_filetype(int n)
 {
-	if ((S_IFMT & n) == S_IFREG)
-        printf("-");
-    else if ((S_IFMT & n) == S_IFDIR)
-        printf("d");
-    else
-    {
-        // 変更するべき
-        printf("?");
-		;
-    }
+	if (S_ISREG(n) == 1)
+        ft_putstr("-");
+    else if (S_ISDIR(n) == 1)
+        ft_putstr("d");
+	else if (S_ISLNK(n) == 1)
+		ft_putstr("l");
+	else if (S_ISCHR(n) == 1)
+		ft_putstr("b");
+	else if (S_ISBLK(n) == 1)
+		ft_putstr("c");
+	else
+		ft_putstr("?");
 }
 
 void	init_per(char *s)
@@ -44,7 +46,7 @@ void	put_rwx(int n)
 	j = 0;
 	while (j < 3)
 	{
-	    if (!(n & 1))//1がたってない時
+	    if (!(n & 1))
 	        s[3 - j - 1] = '-';
 	    n = n >> 1;
 	    j++;
@@ -52,23 +54,13 @@ void	put_rwx(int n)
 	printf("%c%c%c", s[0], s[1], s[2]);
 }
 
-/*
-8進数でパーミッションが与えられるので、
-上の桁から順番にbitシフトで計算する
-
-644の時
-6 -> 110 -> rw-
-4 -> 100 -> r--
-4 -> 100 -> r--
-*/
-
 void    put_permission(int per)
 {
     int n;
 	int d;
 	int i;
 
-	put_filetype(n);
+	put_filetype(per);
     per = per % ft_pow(8, 3);
     i = 0;
     d = ft_pow(8, 2);

@@ -46,20 +46,14 @@ void    sort_reverse(char **dirname)
 
 
 void    sort_dirname(char *dirname, char **inner_dirname, t_input input)
-{
-    
+{ 
     char **tmp;
     char *tp;
     tmp = inner_dirname;
 
-    // sort_by(inner_dirname, &(cmp_by_alpha));
 
     convert_path(dirname, inner_dirname, inner_dirname);
-
-    // put_dirname(inner_dirname);
-
     sort_by(inner_dirname, &(cmp_by_mtime));//option-tがデフォルトなので
-
     if (input.option[key('S')] == 1)
         sort_by(inner_dirname, &(cmp_by_filesize));
     if (input.option[key('u')] == 1)
@@ -77,6 +71,4 @@ void    sort_dirname(char *dirname, char **inner_dirname, t_input input)
         free(tp);
         i++;
     }
-    // put_dirname(inner_dirname);
-    // free(tmp);
 }

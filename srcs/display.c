@@ -45,7 +45,7 @@ void    put_by_l(char *dirname, char *inner_dirname, t_input input)
             printf("@");
         else
             printf(" ");
-        printf("%2d ", stat_buf.st_nlink);//hardlink
+        printf(" %2d ", stat_buf.st_nlink);//hardlink
         user = getpwuid(stat_buf.st_uid);
         group = getgrgid(stat_buf.st_gid);
         printf("%-6s", user->pw_name);
@@ -57,7 +57,14 @@ void    put_by_l(char *dirname, char *inner_dirname, t_input input)
         if (input.option[key('U')] == 1)
             time = convert_time(ctime(&stat_buf.st_ctime));
         printf(" %s ", time);
-        printf("%s\n", inner_dirname);
+        printf("%s", inner_dirname);
+        if (S_ISLNK(stat_buf.st_mode) == 1)
+        {
+            char buf[255];
+            readlink(tmp, buf, 255);
+            printf(" -> %s", buf);
+        }
+        printf("\n");
     }
     else
         perror("put_by_l : ");

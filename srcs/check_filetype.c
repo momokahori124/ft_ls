@@ -5,9 +5,6 @@ int		is_directory(char *dirname, char *inner_dirname)
 	struct stat     buf;
 	char *path;
 
-	// printf("dir   : %s\n", dirname);
-	// printf("inner : %s\n", inner_dirname);	
-
 	if (dirname[0] == '.' && dirname[1] == '/')
 		path = ft_strjoin3(dirname, inner_dirname);
 	else if (dirname[0] == '.')
@@ -20,8 +17,6 @@ int		is_directory(char *dirname, char *inner_dirname)
 		perror("is_directory?");
 	}
 	free(path);
-
-	// printf("-----------\n");
 	return (S_ISDIR(buf.st_mode));
 }
 
