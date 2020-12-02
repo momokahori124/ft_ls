@@ -3,17 +3,17 @@
 void	put_filetype(int n)
 {
 	if (S_ISREG(n) == 1)
-        printf("-");
+        ft_putstr("-");
     else if (S_ISDIR(n) == 1)
-        printf("d");
+        ft_putstr("d");
 	else if (S_ISLNK(n) == 1)
-		printf("l");
+		ft_putstr("l");
 	else if (S_ISCHR(n) == 1)
-		printf("b");
+		ft_putstr("b");
 	else if (S_ISBLK(n) == 1)
-		printf("c");
+		ft_putstr("c");
 	else
-		printf("?");
+		ft_putstr("?");
 }
 
 void	init_per(char *s)
@@ -51,7 +51,9 @@ void	put_rwx(int n)
 	    n = n >> 1;
 	    j++;
 	}
-	printf("%c%c%c", s[0], s[1], s[2]);
+	ft_putchar_fd(s[0], 0);
+	ft_putchar_fd(s[1], 0);
+	ft_putchar_fd(s[2], 0);
 }
 
 void    put_permission(int per)

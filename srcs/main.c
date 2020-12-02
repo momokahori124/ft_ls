@@ -68,7 +68,6 @@ void    input_option(t_input *input, int ac, char *av[])
 
 void    input_dirname(char *av[], t_input *input)
 {
-    //ここでdirnameないときはカレントディレクトリを入れるようにしてくれる
     if (input->dirnum == 0)
     {
         input->dirname[0] = ft_strdup(".");
@@ -127,6 +126,7 @@ int     main(int ac, char *av[])
     count_and_malloc_dirname(av, &input);
     input_dirname(av, &input);
     each_do_ls(input);
+    free_2D(input.dirname);
     while (1);
     return (0);
 }

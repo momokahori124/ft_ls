@@ -18,7 +18,10 @@ SRCS = srcs/main.c \
 		srcs/permission.c \
 		srcs/cmp.c \
 		srcs/check_filetype.c \
-		srcs/path.c
+		srcs/path.c \
+		srcs/mini_printf.c \
+		srcs/free.c \
+		srcs/color_print_bonus.c
 
 INCS = head.h
 
@@ -38,9 +41,10 @@ $(NAME): $(OBJS)
 	@echo "$(_GREEN) Making... $(_END)"
 	@make -C $(LIBS)
 	@echo "$(_GREEN) Finish making Libft.a. $(_END)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -I $(INCS) -g -fsanitize=address
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -I $(INCS)
 	@echo "$(_GREEN) Executable '$(NAME)' created. $(_END)❤️"
 	@echo "$(_GREEN) Try ./$(NAME) to use. $(_END)"
+
 
 all :$(NAME)
 

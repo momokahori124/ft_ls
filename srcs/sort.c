@@ -48,27 +48,17 @@ void    sort_reverse(char **dirname)
 void    sort_dirname(char *dirname, char **inner_dirname, t_input input)
 { 
     char **tmp;
-    char *tp;
-    tmp = inner_dirname;
 
-
-    convert_path(dirname, inner_dirname, inner_dirname);
-    sort_by(inner_dirname, &(cmp_by_mtime));//option-tがデフォルトなので
+    save_2D(&tmp, inner_dirname);
+    convert_path(dirname, tmp, inner_dirname);
+    sort_by(inner_dirname, &(cmp_by_mtime));
     if (input.option[key('S')] == 1)
         sort_by(inner_dirname, &(cmp_by_filesize));
     if (input.option[key('u')] == 1)
         sort_by(inner_dirname, &(cmp_by_atime));
     if (input.option[key('U')] == 1)
         sort_by(inner_dirname, &(cmp_by_ctime));
-
-    sort_reverse(inner_dirname);//option-rがデフォルトなので
-
-    int i = 0;
-    while (inner_dirname[i])
-    {
-        tp = inner_dirname[i];
-        inner_dirname[i] = path_to_filename(inner_dirname[i]);
-        free(tp);
-        i++;
-    }
+    sort_reverse(inner_dirname);
+    path_to_filename_2D(&inner_dirname);
+    free_2D(tmp);
 }

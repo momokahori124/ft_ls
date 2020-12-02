@@ -39,13 +39,24 @@ void    convert_path(char *dirname, char **inner_dirname, char **path)
         return;
     }
     i = 0;
-    char *tmp;
     while (inner_dirname[i])
     {
-        tmp = inner_dirname[i];
         path[i] = ft_strjoin3(dirname, inner_dirname[i]);
-        free(tmp);
         i++;
     }
+}
+
+void    path_to_filename_2D(char ***s)
+{
+    int i = 0;
+    char *tmp;
+
+    while ((*s)[i])
+    {
+        tmp = (*s)[i];
+        (*s)[i] = path_to_filename((*s)[i]);
+        free(tmp);
+        i++;
+    }   
 }
 

@@ -19,8 +19,6 @@ int		cmp_by_mtime(char *s, char *t)
 	struct stat     buf1;	
 	struct stat     buf2;
 
-	// printf("%s %s\n", s, t);
-
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{
 		perror("cmp_by_mtime : ");
@@ -52,7 +50,7 @@ int		cmp_by_ctime(char *s, char *t)
 		perror("cmp_by_ctime : ");
 		exit(0);
 	}
-	return (-(buf1.st_ctime - buf2.st_ctime));
+	return (-(buf1.st_birthtimespec.tv_sec - buf2.st_birthtimespec.tv_sec));
 }
 
 int		cmp_by_filesize(char *s, char *t)
@@ -62,7 +60,7 @@ int		cmp_by_filesize(char *s, char *t)
 
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{
-		perror("cmp_by_ctime : ");
+		perror("cmp_by_filesize : ");
 		exit(0);
 	}	
 	return (-(buf1.st_size - buf2.st_size));

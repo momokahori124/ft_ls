@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef 		long long ll;
 int				ft_atoi(const char *str);
 void			ft_bzero(void *b, size_t n);
 void			*ft_calloc(size_t count, size_t size);
@@ -51,6 +52,9 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+ll				ft_abs(ll n);
+ll				ft_min(ll a, ll b);
+ll				ft_max(ll a, ll b);
 typedef struct	s_list
 {
 	void			*content;

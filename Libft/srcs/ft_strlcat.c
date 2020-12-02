@@ -6,19 +6,11 @@
 /*   By: momoka <momoka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 16:17:35 by mhori             #+#    #+#             */
-/*   Updated: 2020/12/01 00:05:18 by momoka           ###   ########.fr       */
+/*   Updated: 2020/12/03 02:33:01 by momoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
-size_t		ft_min(size_t a, size_t b)
-{
-	if (a < b)
-		return (a);
-	else
-		return (b);
-}
 
 size_t		ft_strlcat(char *dest, const char *src, size_t size)
 {

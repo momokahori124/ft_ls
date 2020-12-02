@@ -6,7 +6,7 @@
 #    By: momoka <momoka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/30 10:10:44 by mhori             #+#    #+#              #
-#    Updated: 2020/12/02 17:43:21 by momoka           ###   ########.fr        #
+#    Updated: 2020/12/03 02:30:49 by momoka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,9 @@ SRCS	=       srcs/ft_atoi.c \
                 srcs/ft_substr.c \
                 srcs/ft_tolower.c \
                 srcs/ft_toupper.c\
+                srcs/ft_min.c \
+                srcs/ft_max.c \
+                srcs/ft_abs.c 
 
 OBJS	= $(SRCS:%.c=%.o)
 BOBJS	= $(BSRCS:%.c=%.o)

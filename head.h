@@ -9,11 +9,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "color.h"
 #include <sys/stat.h>
 #include <pwd.h>
 #include <grp.h>
 #include <errno.h>
-#include "style.h"
 #include "Libft/libft.h"
 
 typedef struct s_input
@@ -22,6 +22,10 @@ typedef struct s_input
     int     dirnum;
     char    **dirname;
 }               t_input;
+
+typedef long long ll;
+
+void	ft_put_dirname(char *dirname, char *inner_dirname, t_input input);
 
 void    sort_dirname(char *dirname, char **inner_dirname, t_input input);
 void    ft_swap(char **s, char **t);
@@ -54,8 +58,14 @@ int		is_regfile(char *dirname, char *inner_dirname);
 char    *path_to_filename(char *s);
 void    convert_path(char *dirname, char **inner_dirname, char **path);
 
-
 /* sort.c */
 void    sort_by(char **dirname, int(*cmp_func)(char *, char *));
+
+void	ft_printf_d(char *fmt, int width, ll n);
+void	ft_printf_s(char *fmt, int width, char *t);
+
+void	free_2D(char **s);
+void	save_2D(char ***tmp, char **s);
+void    path_to_filename_2D(char ***s);
 
 #endif
