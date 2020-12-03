@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_printf.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 20:59:02 by momoka            #+#    #+#             */
+/*   Updated: 2020/12/03 23:58:33 by mhori            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../head.h"
 
-ll	 ft_nbrlen(int width, ll n)
+long long		ft_nbrlen(int width, long long n)
 {
-	ll count;
+	long long count;
 
 	if (n == 0)
 		return (1);
@@ -15,12 +27,12 @@ ll	 ft_nbrlen(int width, ll n)
 	return (count);
 }
 
-void	d_sub(int width, ll n)
+void			d_sub(int width, long long n)
 {
-	ll len;
-	int box;
-	int i;
-	
+	long long	len;
+	int			box;
+	int			i;
+
 	len = ft_nbrlen(width, ft_abs(n));
 	box = width - len;
 	if (n < 0)
@@ -33,10 +45,10 @@ void	d_sub(int width, ll n)
 	}
 	if (n < 0)
 		ft_putchar_fd('-', 1);
-	ft_putnbr_fd(ft_abs(n), 1);	
+	ft_putnbr_fd(ft_abs(n), 1);
 }
 
-void	ft_printf_d(char *fmt, int width, ll n)
+void			ft_printf_d(char *fmt, int width, long long n)
 {
 	while (*fmt)
 	{
@@ -53,12 +65,12 @@ void	ft_printf_d(char *fmt, int width, ll n)
 	}
 }
 
-void	s_sub(int width, char *t)
+void			s_sub(int width, char *t)
 {
 	int len;
 	int box;
 	int i;
-	
+
 	len = 0;
 	while (t[len])
 		len++;
@@ -72,7 +84,7 @@ void	s_sub(int width, char *t)
 	ft_putstr(t);
 }
 
-void	ft_printf_s(char *fmt, int width, char *t)
+void			ft_printf_s(char *fmt, int width, char *t)
 {
 	if (ft_min(width, ft_strlen(t)) < 0)
 		width = ft_strlen(t);

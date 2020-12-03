@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   option.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 20:59:06 by momoka            #+#    #+#             */
+/*   Updated: 2020/12/03 23:26:16 by mhori            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../head.h"
 
 void	ft_put_dirname(char *dirname, char *inner_dirname, t_input input)
 {
-	struct stat     stat_buf;
-	char *path;
+	struct stat		stat_buf;
+	char			*path;
 
 	if (input.option[key('G')] != 1)
 	{

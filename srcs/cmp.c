@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmp.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 21:09:12 by momoka            #+#    #+#             */
+/*   Updated: 2020/12/03 21:18:53 by mhori            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../head.h"
 
-int     cmp_by_alpha(char *s, char *t)
+int			cmp_by_alpha(char *s, char *t)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (s[i] && t[i])
-    {
-        if (s[i] != t[i])
-            return (s[i] - t[i]);
-        i++;
-    }
-    return (s[i] - t[i]);
+	i = 0;
+	while (s[i] && t[i])
+	{
+		if (s[i] != t[i])
+			return (s[i] - t[i]);
+		i++;
+	}
+	return (s[i] - t[i]);
 }
 
-int		cmp_by_mtime(char *s, char *t)
+int			cmp_by_mtime(char *s, char *t)
 {
-	struct stat     buf1;	
-	struct stat     buf2;
+	struct stat		buf1;
+	struct stat		buf2;
 
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{
@@ -32,10 +44,10 @@ int		cmp_by_mtime(char *s, char *t)
 		return (cmp_by_alpha(s, t));
 }
 
-int		cmp_by_atime(char *s, char *t)
+int			cmp_by_atime(char *s, char *t)
 {
-	struct stat     buf1;	
-	struct stat     buf2;
+	struct stat		buf1;
+	struct stat		buf2;
 
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{
@@ -50,17 +62,16 @@ int		cmp_by_atime(char *s, char *t)
 		return (cmp_by_alpha(s, t));
 }
 
-int		cmp_by_ctime(char *s, char *t)
+int			cmp_by_ctime(char *s, char *t)
 {
-	struct stat     buf1;	
-	struct stat     buf2;
+	struct stat		buf1;
+	struct stat		buf2;
 
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{
 		perror("cmp_by_ctime : ");
 		exit(0);
 	}
-
 	if (buf1.st_birthtimespec.tv_sec != buf2.st_birthtimespec.tv_sec)
 		return (-(buf1.st_birthtimespec.tv_sec - buf2.st_birthtimespec.tv_sec));
 	else if (buf1.st_ctimespec.tv_nsec != buf2.st_ctimespec.tv_nsec)
@@ -69,10 +80,10 @@ int		cmp_by_ctime(char *s, char *t)
 		return (cmp_by_alpha(s, t));
 }
 
-int		cmp_by_filesize(char *s, char *t)
+int			cmp_by_filesize(char *s, char *t)
 {
-	struct stat     buf1;	
-	struct stat     buf2;
+	struct stat		buf1;
+	struct stat		buf2;
 
 	if (lstat(s, &buf1) != 0 || lstat(t, &buf2) != 0)
 	{

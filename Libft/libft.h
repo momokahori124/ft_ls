@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhori <mhori@student.42.fr>                +#+  +:+       +#+        */
+/*   By: momoka <momoka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 13:26:38 by mhori             #+#    #+#             */
-/*   Updated: 2020/07/08 11:32:11 by mhori            ###   ########.fr       */
+/*   Created: 2020/12/03 21:01:08 by momoka            #+#    #+#             */
+/*   Updated: 2020/12/03 21:02:28 by momoka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef 		long long ll;
 int				ft_atoi(const char *str);
 void			ft_bzero(void *b, size_t n);
 void			*ft_calloc(size_t count, size_t size);
@@ -52,9 +51,9 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
-ll				ft_abs(ll n);
-ll				ft_min(ll a, ll b);
-ll				ft_max(ll a, ll b);
+long long		ft_abs(long long n);
+long long		ft_min(long long a, long long b);
+long long		ft_max(long long a, long long b);
 typedef struct	s_list
 {
 	void			*content;

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 20:58:54 by momoka            #+#    #+#             */
+/*   Updated: 2020/12/03 22:54:21 by mhori            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../head.h"
 
-
-void	save_2D(char ***tmp, char **s)
+void	fsave_2d(char ***tmp, char **s)
 {
 	int i;
 
@@ -17,9 +28,11 @@ void	save_2D(char ***tmp, char **s)
 	(*tmp)[i] = NULL;
 }
 
-void	free_2D(char ***s)
+void	free_2d(char ***s)
 {
-	int i = 0;
+	int i;
+
+	i = 0;
 	while ((*s)[i])
 	{
 		free((*s)[i]);

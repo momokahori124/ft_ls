@@ -15,14 +15,14 @@ SRCS = srcs/main.c \
 		srcs/sort.c \
 		srcs/display.c \
 		srcs/each_do_ls.c \
-		srcs/debug.c \
 		srcs/permission.c \
 		srcs/cmp.c \
 		srcs/check_filetype.c \
 		srcs/path.c \
 		srcs/mini_printf.c \
 		srcs/free.c \
-		srcs/color_print_bonus.c
+		srcs/color_print_bonus.c \
+		srcs/input.c
 
 INCS = head.h
 
@@ -49,12 +49,12 @@ $(NAME): $(OBJS)
 
 all :$(NAME)
 
-clean: 
+clean:
 	@make clean -C $(LIBS)
 	@rm -f $(OBJS)
 	@echo " $(_RED)Object files has been deleted. $(_END)"
 
-fclean: clean	
+fclean: clean
 	@make fclean -C $(LIBS)
 	@rm -f $(NAME)
 	@echo " $(_RED)$(LIBFT) has been deleted.$(_END)"

@@ -1,69 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   path.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 23:28:34 by mhori             #+#    #+#             */
+/*   Updated: 2020/12/03 23:31:15 by mhori            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../head.h"
 
-char    *path_to_filename(char *s)
+char	*path_to_filename(char *s)
 {
-    char *ret;
+	char	*ret;
+	int		len;
+	int		i;
 
-    if (s == NULL)
-    {
-        ft_putstr("somthing wrong with path_to_filename\n");
-        return (NULL);
-    }
-    int len = ft_strlen(s);
-    int i = len - 1;
-    while (i >= 0)
-    {
-        if (s[i] == '/')
-        {
-            ret  = ft_strdup(s + i + 1);
-            return (ret);
-        }
-        i--;
-    }
-    ret = ft_strdup(s);
-    return (ret);
+	if (s == NULL)
+	{
+		ft_putstr("somthing wrong with path_to_filename\n");
+		return (NULL);
+	}
+	len = ft_strlen(s);
+	i = len - 1;
+	while (i >= 0)
+	{
+		if (s[i] == '/')
+		{
+			ret = ft_strdup(s + i + 1);
+			return (ret);
+		}
+		i--;
+	}
+	ret = ft_strdup(s);
+	return (ret);
 }
 
-void    convert_path(char *dirname, char **inner_dirname, char ***path)
+void	convert_path(char *dirname, char **inner_dirname, char ***path)
 {
-    int i;
-    
-    i = 0;
-    while (inner_dirname[i])
-        i++;
-    (*path) = malloc(sizeof(char *) * (i + 1));
+	int i;
 
-    if (dirname[0] == '.' && dirname[1] != '/')
-    {
-        i = 0;
-        while (inner_dirname[i])
-        {
-            (*path)[i] = ft_strdup(inner_dirname[i]);
-            i++;
-        }
-        (*path)[i] = NULL;
-        return;
-    }
-    i = 0;
-    while (inner_dirname[i])
-    {
-        (*path)[i] = ft_strjoin3(dirname, inner_dirname[i]);
-        i++;
-    }
-    (*path)[i] = NULL;
+	i = 0;
+	while (inner_dirname[i])
+		i++;
+	(*path) = malloc(sizeof(char *) * (i + 1));
+	if (dirname[0] == '.' && dirname[1] != '/')
+	{
+		i = 0;
+		while (inner_dirname[i])
+		{
+			(*path)[i] = ft_strdup(inner_dirname[i]);
+			i++;
+		}
+		(*path)[i] = NULL;
+		return ;
+	}
+	i = 0;
+	while (inner_dirname[i])
+	{
+		(*path)[i] = ft_strjoin3(dirname, inner_dirname[i]);
+		i++;
+	}
+	(*path)[i] = NULL;
 }
 
-void    path_to_filename_2D(char ***s)
+void	path_to_filename_2d(char ***s)
 {
-    int i = 0;
-    char *tmp;
+	int		i;
+	char	*tmp;
 
-    while ((*s)[i])
-    {
-        tmp = (*s)[i];
-        (*s)[i] = path_to_filename((*s)[i]);
-        free(tmp);
-        i++;
-    }   
+	i = 0;
+	while ((*s)[i])
+	{
+		tmp = (*s)[i];
+		(*s)[i] = path_to_filename((*s)[i]);
+		free(tmp);
+		i++;
+	}
 }
-
