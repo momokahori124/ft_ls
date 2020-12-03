@@ -1,0 +1,19 @@
+README.md							README.md
+[34m.git[0m						      |	.git
+[34msrcs[0m						      |	srcs
+[34mreview[0m						      |	review
+[34mLibft[0m						      |	Libft
+[35mtmp.c[0m						      |	tmp.c
+[34m..[0m						      |	..
+leak.sh								leak.sh
+.DS_Store							.DS_Store
+style.h								style.h
+color.h								color.h
+head.h								head.h
+Makefile							Makefile
+[34mft_mini_ls_test[0m					      |	ft_mini_ls_test
+[34mresult[0m						      |	result
+[34m.[0m						      |	.
+[31mft_mini_ls[0m					      |	ft_mini_ls
+[34mtmp[0m						      |	tmp
+[34mtest[0m						      |	test

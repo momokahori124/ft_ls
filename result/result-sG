@@ -1,0 +1,15 @@
+[35mtmp.c[0m						      |	tmp.c
+README.md							README.md
+leak.sh								leak.sh
+[34mtest[0m						      |	test
+[34mft_mini_ls_test[0m					      |	ft_mini_ls_test
+[34mLibft[0m						      |	Libft
+[34mtmp[0m						      |	tmp
+[34mreview[0m						      |	review
+color.h								color.h
+[34mresult[0m						      |	result
+style.h								style.h
+[34msrcs[0m						      |	srcs
+Makefile							Makefile
+head.h								head.h
+[31mft_mini_ls[0m					      |	ft_mini_ls

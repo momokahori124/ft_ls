@@ -7,6 +7,7 @@ _BLUE		=	\x1b[34m
 _PURPLE		=	\x1b[35m
 _CYAN		=	\x1b[36m
 _WHITE		=	\x1b[37m
+_END		= 	\x1b[0m
 
 SRCS = srcs/main.c \
 		srcs/option.c \
@@ -56,7 +57,7 @@ clean:
 fclean: clean	
 	@make fclean -C $(LIBS)
 	@rm -f $(NAME)
-	@echo " $(LIBFT) has been deleted."
+	@echo " $(_RED)$(LIBFT) has been deleted.$(_END)"
 	@echo " $(_RED)Executable file has been deleted. $(_END)"
 
 re: fclean all

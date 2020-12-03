@@ -28,12 +28,12 @@ void	d_sub(int width, ll n)
 	i = 0;
 	while (i < box)
 	{
-		ft_putchar_fd(' ', 0);
+		ft_putchar_fd(' ', 1);
 		i++;
 	}
 	if (n < 0)
-		ft_putchar_fd('-', 0);
-	ft_putnbr_fd(ft_abs(n), 0);	
+		ft_putchar_fd('-', 1);
+	ft_putnbr_fd(ft_abs(n), 1);	
 }
 
 void	ft_printf_d(char *fmt, int width, ll n)
@@ -47,7 +47,7 @@ void	ft_printf_d(char *fmt, int width, ll n)
 		}
 		else
 		{
-			ft_putchar_fd(*fmt, 0);
+			ft_putchar_fd(*fmt, 1);
 			fmt++;
 		}
 	}
@@ -66,7 +66,7 @@ void	s_sub(int width, char *t)
 	i = 0;
 	while (i < box)
 	{
-		ft_putchar_fd(' ', 0);
+		ft_putchar_fd(' ', 1);
 		i++;
 	}
 	ft_putstr(t);
@@ -85,7 +85,7 @@ void	ft_printf_s(char *fmt, int width, char *t)
 		}
 		else
 		{
-			ft_putchar_fd(*fmt, 0);
+			ft_putchar_fd(*fmt, 1);
 			fmt++;
 		}
 	}

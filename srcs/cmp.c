@@ -42,7 +42,12 @@ int		cmp_by_atime(char *s, char *t)
 		perror("cmp_by_atime : ");
 		exit(0);
 	}
-	return (-(buf1.st_atime - buf2.st_atime));
+	if (buf1.st_atime != buf2.st_atime)
+		return (-(buf1.st_atime - buf2.st_atime));
+	else if (buf1.st_atimespec.tv_nsec != buf2.st_atimespec.tv_nsec)
+		return (-(buf1.st_atimespec.tv_nsec - buf2.st_atimespec.tv_nsec));
+	else
+		return (cmp_by_alpha(s, t));
 }
 
 int		cmp_by_ctime(char *s, char *t)
@@ -55,7 +60,13 @@ int		cmp_by_ctime(char *s, char *t)
 		perror("cmp_by_ctime : ");
 		exit(0);
 	}
-	return (-(buf1.st_birthtimespec.tv_sec - buf2.st_birthtimespec.tv_sec));
+
+	if (buf1.st_birthtimespec.tv_sec != buf2.st_birthtimespec.tv_sec)
+		return (-(buf1.st_birthtimespec.tv_sec - buf2.st_birthtimespec.tv_sec));
+	else if (buf1.st_ctimespec.tv_nsec != buf2.st_ctimespec.tv_nsec)
+		return (-(buf1.st_ctimespec.tv_nsec - buf2.st_ctimespec.tv_nsec));
+	else
+		return (cmp_by_alpha(s, t));
 }
 
 int		cmp_by_filesize(char *s, char *t)
@@ -67,6 +78,9 @@ int		cmp_by_filesize(char *s, char *t)
 	{
 		perror("cmp_by_filesize : ");
 		exit(0);
-	}	
-	return (-(buf1.st_size - buf2.st_size));
+	}
+	if (buf1.st_size != buf2.st_size)
+		return (-(buf1.st_size - buf2.st_size));
+	else
+		return (cmp_by_alpha(s, t));
 }

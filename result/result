@@ -1,0 +1,15 @@
+README.md							README.md
+srcs								srcs
+review								review
+Libft								Libft
+tmp.c								tmp.c
+leak.sh								leak.sh
+style.h								style.h
+color.h								color.h
+head.h								head.h
+Makefile							Makefile
+ft_mini_ls_test							ft_mini_ls_test
+result								result
+ft_mini_ls							ft_mini_ls
+tmp								tmp
+test								test

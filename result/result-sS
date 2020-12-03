@@ -1,0 +1,16 @@
+  0tmp.c						      |	total 152
+  8README.md						      |	  0 tmp.c
+  8leak.sh						      |	  8 README.md
+  0test							      |	  8 leak.sh
+  0ft_mini_ls_test					      |	  0 test
+  0Libft						      |	  0 ft_mini_ls_test
+  0tmp							      |	  0 Libft
+  0review						      |	  0 tmp
+  8color.h						      |	  0 review
+  0result						      |	  8 color.h
+  8style.h						      |	  0 result
+  0srcs							      |	  8 style.h
+  8Makefile						      |	  0 srcs
+  8head.h						      |	  8 Makefile
+104ft_mini_ls						      |	  8 head.h
+							      >	104 ft_mini_ls

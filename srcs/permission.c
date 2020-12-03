@@ -51,9 +51,9 @@ void	put_rwx(int n)
 	    n = n >> 1;
 	    j++;
 	}
-	ft_putchar_fd(s[0], 0);
-	ft_putchar_fd(s[1], 0);
-	ft_putchar_fd(s[2], 0);
+	ft_putchar_fd(s[0], 1);
+	ft_putchar_fd(s[1], 1);
+	ft_putchar_fd(s[2], 1);
 }
 
 void    put_permission(int per)
