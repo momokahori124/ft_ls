@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:09:12 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 21:18:53 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 03:35:16 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ int			cmp_by_ctime(char *s, char *t)
 	}
 	if (buf1.st_birthtimespec.tv_sec != buf2.st_birthtimespec.tv_sec)
 		return (-(buf1.st_birthtimespec.tv_sec - buf2.st_birthtimespec.tv_sec));
-	else if (buf1.st_ctimespec.tv_nsec != buf2.st_ctimespec.tv_nsec)
-		return (-(buf1.st_ctimespec.tv_nsec - buf2.st_ctimespec.tv_nsec));
+	else if (buf1.st_birthtimespec.tv_nsec != buf2.st_birthtimespec.tv_nsec)
+		return (-(buf1.st_birthtimespec.tv_nsec - \
+		buf2.st_birthtimespec.tv_nsec));
 	else
 		return (cmp_by_alpha(s, t));
 }

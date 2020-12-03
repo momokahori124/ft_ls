@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:58:48 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 22:49:53 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 02:29:44 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,19 @@ void	option_r_sub(char *dirname, char *s, int index, t_input input)
 {
 	char			*tmp;
 
-	if (is_directory(dirname, s) == 1 &&\
-		s[0] != '.')
+	if (is_directory(dirname, s) == 1 && s[0] != '.')
 	{
+		tmp = dirname;
+		tmp = ft_strjoin3(dirname, s);
+		option_r(tmp, input, index + 1);
+		free(tmp);
+	}
+	else if (is_directory(dirname, s) == 1 && input.option[key('a')])
+	{
+		if (s[1] == '\0')
+			return ;
+		if (s[1] == '.' && s[2] == '\0')
+			return ;
 		tmp = dirname;
 		tmp = ft_strjoin3(dirname, s);
 		option_r(tmp, input, index + 1);

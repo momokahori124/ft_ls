@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 23:28:34 by mhori             #+#    #+#             */
-/*   Updated: 2020/12/03 23:31:15 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:00:23 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ char	*path_to_filename(char *s)
 	}
 	ret = ft_strdup(s);
 	return (ret);
+}
+
+char	*filename_to_path(char *dirname, char *inner_dirname)
+{
+	char *path;
+
+	if (dirname[0] == '.' && dirname[1] != '/')
+	{
+		path = ft_strdup(inner_dirname);
+		return (path);
+	}
+	path = ft_strjoin3(dirname, inner_dirname);
+	return (path);
 }
 
 void	convert_path(char *dirname, char **inner_dirname, char ***path)

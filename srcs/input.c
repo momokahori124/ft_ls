@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 23:17:14 by mhori             #+#    #+#             */
-/*   Updated: 2020/12/03 23:23:33 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:10:00 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ void	input_option(t_input *input, int ac, char *av[])
 		while (av[i][j])
 		{
 			if (av[i][j] != '-')
+			{
 				input->option[key(av[i][j])] = 1;
+				if (av[i][j] == 'u' || av[i][j] == 'U')
+					input->u = av[i][j];
+			}
 			j++;
 		}
 		i++;

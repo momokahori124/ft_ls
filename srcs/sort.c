@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:59:16 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 23:49:14 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:09:54 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ void		sort_dirname(char *dirname, char **inner_dirname, t_input input)
 	convert_path(dirname, inner_dirname, &path);
 	copy_path_to_inner(inner_dirname, &path);
 	sort_by(inner_dirname, &(cmp_by_mtime));
-	if (input.option[key('S')] == 1)
-		sort_by(inner_dirname, &(cmp_by_filesize));
 	if (input.option[key('u')] == 1)
 		sort_by(inner_dirname, &(cmp_by_atime));
 	if (input.option[key('U')] == 1)
 		sort_by(inner_dirname, &(cmp_by_ctime));
+	if (input.u == 'u')
+		sort_by(inner_dirname, &(cmp_by_atime));
+	if (input.option[key('S')] == 1)
+		sort_by(inner_dirname, &(cmp_by_filesize));
 	sort_reverse(inner_dirname);
 	path_to_filename_2d(&inner_dirname);
 }

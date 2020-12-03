@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:58:58 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 23:20:00 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:10:54 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int		main(int ac, char *av[])
 	input_dirname(av, &input);
 	each_do_ls(input);
 	free_2d(&input.dirname);
+	while (1);
 	return (0);
 }

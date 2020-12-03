@@ -6,13 +6,13 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:59:02 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 23:58:33 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 00:57:01 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../head.h"
 
-long long		ft_nbrlen(int width, long long n)
+long long		ft_nbrlen(long long n)
 {
 	long long count;
 
@@ -33,7 +33,7 @@ void			d_sub(int width, long long n)
 	int			box;
 	int			i;
 
-	len = ft_nbrlen(width, ft_abs(n));
+	len = ft_nbrlen(ft_abs(n));
 	box = width - len;
 	if (n < 0)
 		box--;

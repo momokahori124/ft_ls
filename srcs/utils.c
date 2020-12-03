@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:59:20 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 23:53:12 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 03:58:44 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,31 @@ char	*ft_strjoin3(char *s, char *t)
 	}
 	ret[i + j] = '\0';
 	return (ret);
+}
+
+void	is_u_first(char *save, t_input *input)
+{
+	int		count;
+
+	while (save[count])
+		count++;
+	count--;
+	while (count >= 0)
+	{
+		if (save[count] == 'u')
+		{
+			input->is_u_first = 1;
+			break ;
+		}
+		else if (save[count] == 'U')
+			break ;
+		count--;
+	}
+}
+
+void	get_max_total(t_input *input, struct stat buf)
+{
+	input->max_blocks = ft_max(buf.st_blocks, input->max_blocks);
+	input->total += buf.st_blocks;
+	input->count++;
 }
