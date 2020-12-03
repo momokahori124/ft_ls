@@ -24,7 +24,12 @@ int		cmp_by_mtime(char *s, char *t)
 		perror("cmp_by_mtime : ");
 		exit(0);
 	}
-	return (-(buf1.st_mtime - buf2.st_mtime));
+	if (buf1.st_mtime != buf2.st_mtime)
+		return (-(buf1.st_mtime - buf2.st_mtime));
+	else if (buf1.st_mtimespec.tv_nsec != buf2.st_mtimespec.tv_nsec)
+		return (-(buf1.st_mtimespec.tv_nsec - buf2.st_mtimespec.tv_nsec));
+	else
+		return (cmp_by_alpha(s, t));
 }
 
 int		cmp_by_atime(char *s, char *t)
