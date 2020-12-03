@@ -6,11 +6,11 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:58:54 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/03 22:54:21 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:48:41 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../head.h"
+#include "../includes/head.h"
 
 void	fsave_2d(char ***tmp, char **s)
 {

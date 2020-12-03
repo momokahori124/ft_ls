@@ -1,39 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   option.c                                           :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 20:59:06 by momoka            #+#    #+#             */
+/*   Created: 2020/12/03 20:58:54 by momoka            #+#    #+#             */
 /*   Updated: 2020/12/04 04:48:41 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-void	ft_put_dirname(char *dirname, char *inner_dirname, t_input input)
+void	fsave_2d(char ***tmp, char **s)
 {
-	struct stat		stat_buf;
-	char			*path;
+	int i;
 
-	if (input.option[key('G')] != 1)
+	while (s[i])
+		i++;
+	*tmp = malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (s[i])
 	{
-		ft_printf_s("%\n", 0, inner_dirname);
-		return ;
+		(*tmp)[i] = ft_strdup(s[i]);
+		i++;
 	}
-	if (dirname[0] == '.' && dirname[1] != '/')
-		path = ft_strdup(inner_dirname);
-	else
-		path = ft_strjoin3(dirname, inner_dirname);
-	lstat(path, &stat_buf);
-	if (S_ISDIR(stat_buf.st_mode))
-		putstr_blue(inner_dirname);
-	else if (S_ISLNK(stat_buf.st_mode))
-		putstr_magent(inner_dirname);
-	else if (stat_buf.st_mode & S_IXUSR)
-		putstr_red(inner_dirname);
-	else
-		ft_printf_s("%\n", 0, inner_dirname);
-	free(path);
+	(*tmp)[i] = NULL;
+}
+
+void	free_2d(char ***s)
+{
+	int i;
+
+	i = 0;
+	while ((*s)[i])
+	{
+		free((*s)[i]);
+		(*s)[i] = NULL;
+		i++;
+	}
+	free((*s));
+	(*s) = NULL;
 }

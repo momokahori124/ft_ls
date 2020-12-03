@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:58:58 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/04 04:49:30 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:50:14 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,6 @@ int		main(int ac, char *av[])
 {
 	t_input		input;
 
-	if (ac != 1)
-	{
-		write(2, "error\n", 6);
-		return (1);
-	}
 	input = (t_input){0};
 	input_option(&input, ac, av);
 	count_and_malloc_dirname(av, &input);

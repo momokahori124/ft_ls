@@ -9,24 +9,46 @@ _CYAN		=	\x1b[36m
 _WHITE		=	\x1b[37m
 _END		= 	\x1b[0m
 
-SRCS = srcs/main.c \
-		srcs/option.c \
-		srcs/utils.c \
-		srcs/sort.c \
-		srcs/display.c \
-		srcs/each_do_ls.c \
-		srcs/permission.c \
-		srcs/cmp.c \
-		srcs/check_filetype.c \
-		srcs/path.c \
-		srcs/mini_printf.c \
-		srcs/free.c \
-		srcs/color_print_bonus.c \
-		srcs/input.c
+SRCFILE = main.c \
+		option.c \
+		utils.c \
+		sort.c \
+		display.c \
+		each_do_ls.c \
+		permission.c \
+		cmp.c \
+		check_filetype.c \
+		path.c \
+		mini_printf.c \
+		free.c \
+		color_print_bonus.c \
+		input.c
 
-INCS = head.h
+BNSFILE = main_bonus.c \
+		option_bonus.c \
+		utils_bonus.c \
+		sort_bonus.c \
+		display_bonus.c \
+		each_do_ls_bonus.c \
+		permission_bonus.c \
+		cmp_bonus.c \
+		check_filetype_bonus.c \
+		path_bonus.c \
+		mini_printf_bonus.c \
+		free_bonus.c \
+		color_print_bonus.c \
+		input_bonus.c
+
+SRCDIR = srcs/
+BNSDIR =bonus_srcs/
+
+SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
+BSRCS = $(addprefix $(BNSDIR), $(BNSFILE))
+
+INCS = includes/head.h
 
 OBJS = $(SRCS:.c=.o)
+BOBJS = $(BSRCS:.c=.o)
 
 NAME = ft_mini_ls
 
@@ -46,12 +68,19 @@ $(NAME): $(OBJS)
 	@echo "$(_GREEN) Executable '$(NAME)' created. $(_END)❤️"
 	@echo "$(_GREEN) Try ./$(NAME) to use. $(_END)"
 
-
 all :$(NAME)
+
+bonus :$(BOBJS)
+	@echo "$(_GREEN) Making bonus... $(_END)"
+	@make -C $(LIBS)
+	@echo "$(_GREEN) Finish making Libft.a. $(_END)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(BOBJS) $(LIBFT) -I $(INCS)
+	@echo "$(_GREEN) Executable '$(NAME)' created. $(_END)❤️"
+	@echo "$(_GREEN) Try ./$(NAME) to use. $(_END)"
 
 clean:
 	@make clean -C $(LIBS)
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(BOBJS)
 	@echo " $(_RED)Object files has been deleted. $(_END)"
 
 fclean: clean

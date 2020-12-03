@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 00:04:50 by mhori             #+#    #+#             */
-/*   Updated: 2020/12/04 04:07:45 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 04:49:05 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <pwd.h>
 # include <grp.h>
 # include <errno.h>
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 
 typedef struct	s_input
 {
