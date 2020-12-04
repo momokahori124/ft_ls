@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/12/04 14:51:46 by mhori             #+#    #+#              #
+#    Updated: 2020/12/04 14:52:55 by mhori            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Colors
 _GREY		=	\x1b[30m
 _RED		=	\x1b[31m
@@ -40,7 +52,7 @@ BNSFILE = main_bonus.c \
 		input_bonus.c
 
 SRCDIR = srcs/
-BNSDIR =bonus_srcs/
+BNSDIR = bonus_srcs/
 
 SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
 BSRCS = $(addprefix $(BNSDIR), $(BNSFILE))
