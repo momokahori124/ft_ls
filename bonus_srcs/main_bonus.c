@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:58:58 by momoka            #+#    #+#             */
-/*   Updated: 2020/12/04 04:57:06 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 20:10:37 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int		main(int ac, char *av[])
 {
 	t_input		input;
 
+	if (is_error(ac, av))
+	{
+		write(2, "Error.\n", 7);
+		return (1);
+	}
 	input = (t_input){0};
 	input_option(&input, ac, av);
 	count_and_malloc_dirname(av, &input);

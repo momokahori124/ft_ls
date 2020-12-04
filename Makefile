@@ -6,7 +6,7 @@
 #    By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 14:51:46 by mhori             #+#    #+#              #
-#    Updated: 2020/12/04 14:52:55 by mhori            ###   ########.fr        #
+#    Updated: 2020/12/04 20:08:26 by mhori            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ BNSFILE = main_bonus.c \
 		mini_printf_bonus.c \
 		free_bonus.c \
 		color_print_bonus.c \
-		input_bonus.c
+		input_bonus.c \
+		error_bonus.c
 
 SRCDIR = srcs/
 BNSDIR = bonus_srcs/
@@ -87,7 +88,7 @@ bonus :$(BOBJS)
 	@make -C $(LIBS)
 	@echo "$(_GREEN) Finish making Libft.a. $(_END)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(BOBJS) $(LIBFT) -I $(INCS)
-	@echo "$(_GREEN) Executable '$(NAME)' created. $(_END)❤️"
+	@echo "$(_GREEN) Executable '$(NAME)' created. ❤$(_END)"
 	@echo "$(_GREEN) Try ./$(NAME) to use. $(_END)"
 
 clean:

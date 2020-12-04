@@ -6,7 +6,7 @@
 /*   By: mhori <mhori@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 00:04:50 by mhori             #+#    #+#             */
-/*   Updated: 2020/12/04 04:49:05 by mhori            ###   ########.fr       */
+/*   Updated: 2020/12/04 20:09:10 by mhori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			ft_swap(char **s, char **t);
 void			display_2d(char *dirname, char **inner_dirname, t_input input);
 void			ft_putstr(char *s);
 int				key(char c);
+int				is_error(int ac, char *av[]);
+int				is_option_valid(char *av[]);
 char			*ft_strjoin3(char *s, char *t);
 int				count_inner(char *dirname);
 int				input_inner(char **inner_dirname, char *dirname);
