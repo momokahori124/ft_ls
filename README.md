@@ -1,4 +1,4 @@
-# ft_mini_ls
+# ft_ls
 Implement "ls" command by C.
 
 
